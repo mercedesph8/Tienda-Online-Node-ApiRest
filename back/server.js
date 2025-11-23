@@ -178,52 +178,7 @@ app.post('/api/carrito', (req,res) => {
         usuario: payload.nombreUsuario
      });
 });
-        //Endpoint para los productos vistos (recibe los id de los productos y devuelve la info de estos)
-        app.post('/api/productos_vistos', (req,res) => {
-            //Verificamos el token
-           const autenticacionHeader = req.headers['authorization'];
-            if (!autenticacionHeader) {
-        return res.status(403).json({
-            message: "No tienes permisos para acceder"
-        });
-    }
-
-        const token = autenticacionHeader.split(' ')[1];
-        const payload = verificarJWT(token);
-         if (!payload) {
-        return res.status(403).json({
-            message: 'Token inválido o expirado'
-        });
-    }
-
-//Recibimos el array de id de los productos vistos
-const { productosVistos } = req.body;
-//Validamos que sea un array porque si cambian el codigo y se manda otra cosa, el servidor peta
-if (!Array.isArray(productosVistos)) {
-        return res.status(400).json({
-            message: "El formato debe ser un array de IDs"
-        });
-    }
-    //Buscamos los productos reales
-    const productosValidos = [];
-    const productosNoEncontrados = [];
-
-    productosVistos.forEach(idProducto => {
-        const producto = tienda.productos.find (p => p.id === idProducto);
-        //Si encuentra el producto, lo guarda en el array de productos
-        if(producto) {
-            productosValidos.push(producto);
-        }else {
-            productosNoEncontrados.push(idProducto);
-        }
-    });
-     // Respondemos
-    res.json({
-        message: "Productos vistos procesados",
-        productos: productosValidos,
-        noEncontrados: productosNoEncontrados.length > 0 ? productosNoEncontrados : undefined
-    });
-});
+    
 // Arrancar el servidor 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
