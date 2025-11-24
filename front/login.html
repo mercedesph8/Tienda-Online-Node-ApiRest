@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Panadería Artesanal</title>
+    <link rel="stylesheet" href="/scss/main.css">
+</head>
+<body>
+    <div class="contenedor-login">
+        <h2>🍞 Panadería Artesanal</h2>
+        <p class="subtitulo">Bienvenido a nuestra tienda online</p>
+        
+        <form id="formularioLogin">
+            <div class="campo">
+                <label for="nombreUsuario">Usuario:</label>
+                <input type="text" id="nombreUsuario" name="nombreUsuario" required>
+            </div>
+            
+            <div class="campo">
+                <label for="contrasenia">Contraseña:</label>
+                <input type="password" id="contrasenia" name="contrasenia" required>
+            </div>
+            
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+        
+        <div class="info-usuarios">
+            <p>Usuarios de prueba:</p>
+            <ul>
+                <li>admin / admin123</li>
+                <li>usuario1 / 1111</li>
+                <li>usuario2 / 2222</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script src="login.js"></script>
+</body>
+</html>
