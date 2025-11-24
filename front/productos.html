@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producto - Panadería Artesanal</title>
+    <link rel="stylesheet" href="/scss/main.css">
+</head>
+
+<body>
+    <div class="contenedor-product">
+        <!-- Header con navegación -->
+        <header class="header-product">
+            <h1>🍞 Panadería Artesanal</h1>
+            <nav class="nav-principal">
+                <a href="dashboard.html" class="btn-nav">Inicio</a>
+                <a href="categorias.html" class="btn-nav">Categorías</a>
+                <a href="carrito.html" class="btn-nav btn-carrito">🛒 Carrito</a>
+                <button id="botonCerrarSesion" class="btn-cerrar-sesion">Cerrar Sesión</button>
+            </nav>
+        </header>
+
+        <!-- Detalles del producto -->
+        <section class="seccion-producto-detalle">
+            <div class="producto-imagen">
+                <img id="imagenProducto" src="" alt="">
+            </div>
+
+            <div class="producto-info">
+                <h2 id="nombreProducto">Producto</h2>
+                <p class="categoria-producto">Categoría: <span id="categoriaProducto"></span></p>
+                <p class="descripcion-producto" id="descripcionProducto"></p>
+                <p class="precio-producto"><span id="precioProducto"></span>€</p>
+
+                <div class="acciones-producto">
+                    <button id="botonAgregarCarrito" class="btn-agregar-grande">
+                        Agregar al Carrito
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="product.js"></script>
+</body>
+
+</html>

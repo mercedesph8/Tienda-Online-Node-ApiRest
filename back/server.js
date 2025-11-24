@@ -38,7 +38,7 @@ function crearJWT(payload) {
         alg: "HS256",
         typ: 'JWT'
     };
-    
+
     const headerCodificado = base64UrlEncode(JSON.stringify(header));
     const payloadCodificado = base64UrlEncode(JSON.stringify(payload));
 
@@ -55,11 +55,11 @@ function crearJWT(payload) {
 
 function verificarJWT(token) {
     const partes = token.split('.');
-    
+
     if (partes.length !== 3) {
         return null;
     }
-    
+
     const [headerCodificado, payloadCodificado, firmaRecibida] = partes;
 
     const firmaEsperada = crypto
@@ -92,7 +92,7 @@ const tienda = JSON.parse(
 );
 
 //Endpoint de login que 
- app.post('/api/login', (req, res) => {
+app.post('/api/login', (req, res) => {
     const { nombreUsuario, contrasenia } = req.body;
 
     // Buscar usuario en el array cargado de usuarios.json
@@ -116,18 +116,18 @@ const tienda = JSON.parse(
     const token = crearJWT(payload);
 
     //La respuesta es el token y la tienda completa
- res.json({
+    res.json({
         message: 'Autenticación correcta',
         token: token,
-        tienda: tienda 
+        tienda: tienda
     });
 });
 
 // Endpoint del Carrito (Tiene que verificar precios antes de procesar la compra)
-app.post('/api/carrito', (req,res) => {
-   //Verificamos que el header existe, si no existe, error 
-    const autenticacionHeader = req.header ['autorizathion'];
-     if (!autenticacionHeader) {
+app.post('/api/carrito', (req, res) => {
+    //Verificamos que el header existe, si no existe, error 
+    const autenticacionHeader = req.header['autorizathion'];
+    if (!autenticacionHeader) {
         return res.status(403).json({
             message: "No tienes permisos para acceder"
         });
@@ -136,22 +136,22 @@ app.post('/api/carrito', (req,res) => {
     const token = autenticacionHeader.split(' ')[1]; //Separo y cojo la segunda parte (el token)
     const payload = verificarJWT(token);
     //Si el payload es inválido,error
-     if (!payload) {
+    if (!payload) {
         return res.status(403).json({
             message: 'Token inválido o expirado'
         });
     }
-     //Si no, recibo el carrito del cliente
-     const { carrito} = req.body;
+    //Si no, recibo el carrito del cliente
+    const { carrito } = req.body;
 
-     //Verifico los productos del carrito
-     let precioTotal = 0;
-     let hayErrores = false;
-     const errores = [];
-     
-     carrito.forEach(item => {
+    //Verifico los productos del carrito
+    let precioTotal = 0;
+    let hayErrores = false;
+    const errores = [];
+
+    carrito.forEach(item => {
         //Busco el producto real de la tienda
-        const productoReal = tienda.productos.find (p => p.id === item.id);
+        const productoReal = tienda.productos.find(p => p.id === item.id);
         //Si el producto no existe o el precio no coincide,error
         if (!productoReal) {
             hayErrores = true;
@@ -159,26 +159,26 @@ app.post('/api/carrito', (req,res) => {
         } else if (productoReal.precio !== item.precio) { //Esto es porque el precio peude haber sido manipulado desde el front
             hayErrores = true;
             errores.push(`El precio del producto con ID ${item.id} ha cambiado. Precio actual: ${productoReal.precio}`);
-        }else {//Si todo esta bien, sumo el precio al total
+        } else {//Si todo esta bien, sumo el precio al total
             precioTotal += productoReal.precio * item.cantidad;
         }
-     });
+    });
 
-     //Si ha habido errores, los envío
-     if (hayErrores) {
+    //Si ha habido errores, los envío
+    if (hayErrores) {
         return res.status(400).json({
             message: 'Errores en el carrito',
             errores: errores
         });
-     }
-     //Si todo ha ido bien, confirmo la compra
-     res.json({
+    }
+    //Si todo ha ido bien, confirmo la compra
+    res.json({
         message: 'Gracias por su compra',
         precioTtotal: precioTotal.toFixed(2),//Formateo a 2 decimales, devuelve string
         usuario: payload.nombreUsuario
-     });
+    });
 });
-    
+
 // Arrancar el servidor 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorías - Panadería Artesanal</title>
+    <link rel="stylesheet" href="/scss/main.css">
+</head>
+
+<body>
+    <div class="contenedor-categories">
+        <!-- Header con navegación -->
+        <header class="header-categories">
+            <h1>🍞 Panadería Artesanal</h1>
+            <nav class="nav-principal">
+                <a href="dashboard.html" class="btn-nav">Inicio</a>
+                <a href="carrito.html" class="btn-nav btn-carrito">🛒 Carrito</a>
+                <button id="botonCerrarSesion" class="btn-cerrar-sesion">Cerrar Sesión</button>
+            </nav>
+        </header>
+
+        <!-- Información de la categoría -->
+        <section class="seccion-categoria-info">
+            <h2 id="nombreCategoria">Categoría</h2>
+            <p id="descripcionCategoria">Descripción de la categoría</p>
+        </section>
+
+        <!-- Productos de la categoría -->
+        <section class="seccion-productos-categoria">
+            <h3>Productos Disponibles</h3>
+            <div id="productosCategoria" class="grid-productos">
+                <!-- Los productos se cargarán aquí con JavaScript -->
+            </div>
+        </section>
+    </div>
+
+    <script src="categorias.js"></script>
+</body>
+
+</html>

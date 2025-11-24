@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito - Panadería Artesanal</title>
+    <link rel="stylesheet" href="/scss/main.css">
+</head>
+
+<body>
+    <div class="contenedor-cart">
+        <!-- Header con navegación -->
+        <header class="header-cart">
+            <h1>🍞 Panadería Artesanal</h1>
+            <nav class="nav-principal">
+                <a href="dashboard.html" class="btn-nav">Inicio</a>
+                <a href="categorias.html" class="btn-nav">Categorías</a>
+                <button id="botonCerrarSesion" class="btn-cerrar-sesion">Cerrar Sesión</button>
+            </nav>
+        </header>
+
+        <!-- Título -->
+        <section class="seccion-titulo-carrito">
+            <h2>🛒 Tu Carrito de Compras</h2>
+        </section>
+
+        <!-- Productos del carrito -->
+        <section class="seccion-carrito">
+            <div id="productosCarrito" class="lista-carrito">
+                <!-- Los productos del carrito se cargarán aquí -->
+            </div>
+
+            <!-- Resumen del carrito -->
+            <div class="resumen-carrito">
+                <h3>Resumen del Pedido</h3>
+                <div class="linea-resumen">
+                    <span>Total de productos:</span>
+                    <span id="totalProductos">0</span>
+                </div>
+                <div class="linea-resumen total">
+                    <span>Total a pagar:</span>
+                    <span id="totalPrecio">0.00€</span>
+                </div>
+
+                <button id="btnRealizarCompra" class="btn-comprar">
+                    Realizar Compra
+                </button>
+
+                <button id="botonVaciarCarrito" class="btn-vaciar">
+                    Vaciar Carrito
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <script src="cart.js"></script>
+</body>
+
+</html>
