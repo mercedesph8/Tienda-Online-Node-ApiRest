@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: variables.$color-fondo-claro;
+  font-family: variables.$fuente-principal;
+  min-height: 100vh;
+}
+.contenedor-dashboard {
+  margin: 0;
+  padding: 20px;
+  max-width: 1400;
+  h1 {
+    .nav-principal {
+      a {
+      }
+      #botonCerrarSesion {
+      }
+    }
+  }
+}

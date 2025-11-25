@@ -1,0 +1,16 @@
+@use "variables";
+@use "mixins";
+@use 'login'; 
+
+// Estilos base globales
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: variables.$fuente-principal;
+    color: variables.$color-texto;
+}
+

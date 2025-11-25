@@ -1,0 +1,32 @@
+@use 'variables'; 
+//Centrar 
+@mixin centrar-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// Sombra al hacer hover
+@mixin sombra-hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+//Base para botones
+@mixin boton-base {
+    padding: 12px 24px;
+    border: none;
+    border-radius: variables.$border-radius;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    @include transicion(all);
+    
+    &:hover {
+        transform: translateY(-2px);
+        @include sombra-hover;
+    }
+}
+//Para que la transicion se haga en todas las propiedades que cambien (por eso pasamos por parámetro $propiedad)
+@mixin transicion($propiedad) {
+    transition: $propiedad variables.$transicion-normal;
+}

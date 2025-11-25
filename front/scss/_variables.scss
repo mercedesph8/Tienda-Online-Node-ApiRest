@@ -1,0 +1,36 @@
+// _variables.scss
+// Este archivo guarda todos los valores que vamos a reutilizar
+$color-primario: #8B4513;     
+$color-secundario: #D2691E; 
+$color-acento: #CD853F; 
+
+$color-fondo: #FFF8DC;
+$color-fondo-claro: #FFFAF0; 
+
+$color-texto: #3E2723;
+$color-texto-claro: #6D4C41;
+
+$color-error: #C62828;
+$color-exito: #2E7D32;
+
+$color-blanco: #FFFFFF;
+$color-sombra: rgba(62, 39, 35, 0.1);
+
+//Fuentes
+$fuente-principal: 'Arial', sans-serif;
+$fuente-titulos: 'Georgia', serif;
+
+//Tamaños
+$espaciado-pequeno: 8px;
+$espaciado-medio: 16px;
+$espaciado-grande: 24px;
+$espaciado-xlarge: 40px;
+
+//Esquinas redondeadas
+$border-radius: 8px;
+$border-radius-grande: 16px;
+
+// Transiciones
+$transicion-rapida: 0.2s ease;
+$transicion-normal: 0.3s ease;
+
