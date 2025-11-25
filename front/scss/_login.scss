@@ -83,7 +83,7 @@ body {
             width: 100%;
 
             &:hover {
-              background-color:variables.$color-primario;
+              background-color:variables.$color-primario-hover;
             }
             &:active {
               transform: scale(0.98);

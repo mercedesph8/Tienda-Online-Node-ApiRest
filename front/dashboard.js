@@ -66,24 +66,16 @@ function crearTarjetaProducto(producto) {
 // Carga las categorías desde localStorage
 function cargarCategorias() {
     const tienda = JSON.parse(localStorage.getItem('tienda'));
-    const categorias = tienda.categorias;
 
-    const contenedor = document.getElementById('listadoCategorias');
+    const contenedor = document.getElementById('menuCategorias');
     contenedor.innerHTML = '';
 
-    categorias.forEach(categoria => {
-        const tarjeta = document.createElement('div');
-        tarjeta.className = 'tarjeta-categoria';
+    tienda.categorias.forEach(categoria => {
+        const enlace = document.createElement('a');
+        enlace.href = `categories.html?id=${categoria.id}`;
+        enlace.textContent = categoria.nombre;
 
-        tarjeta.innerHTML = `
-            <h4>${categoria.nombre}</h4>
-            <p>${categoria.descripcion}</p>
-            <a href="categorias.html?id=${categoria.id}" class="boton-categoria">
-                Ver Productos
-            </a>
-        `;
-
-        contenedor.appendChild(tarjeta);
+        contenedor.appendChild(enlace);
     });
 }
 

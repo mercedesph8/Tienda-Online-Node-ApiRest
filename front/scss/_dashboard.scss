@@ -1,3 +1,6 @@
+@use "variables";
+@use "mixins";
+
 body {
   margin: 0;
   padding: 0;
@@ -5,16 +8,323 @@ body {
   font-family: variables.$fuente-principal;
   min-height: 100vh;
 }
+
 .contenedor-dashboard {
-  margin: 0;
+  margin: 0 auto;
   padding: 20px;
-  max-width: 1400;
+  max-width: 1400px;
+}
+
+.header-dashboard {
+  background-color: variables.$color-blanco;
+  padding: variables.$espaciado-medio variables.$espaciado-grande;
+  border-radius: variables.$border-radius;
+  box-shadow: 0 2px 8px variables.$color-sombra;
+  margin-bottom: variables.$espaciado-grande;
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: variables.$espaciado-medio;
+    padding-bottom: variables.$espaciado-medio;
+    border-bottom: 2px solid variables.$color-fondo; // Línea separadora
+  }
+
   h1 {
-    .nav-principal {
+    color: variables.$color-primario;
+    font-family: variables.$fuente-titulos;
+    font-size: 28px;
+    margin: 0;
+  }
+
+  .nav-principal {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+
+    .btn-nav {
+      padding: 10px 20px;
+      background-color: variables.$color-acento;
+      color: variables.$color-blanco;
+      border-radius: variables.$border-radius;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+
+      &:hover {
+        // transform: translateY(-2px) = Sube 2px
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-color: variables.$color-acento-hover;
+      }
+    }
+
+    .btn-carrito {
+      background-color: variables.$color-secundario;
+
+      &:hover {
+        background-color: variables.$color-secundario-hover;
+      }
+    }
+
+    #botonCerrarSesion {
+      padding: 10px 20px;
+      background-color: transparent;
+      color: variables.$color-error;
+      border: 2px solid variables.$color-error;
+      border-radius: variables.$border-radius;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        // Al hacer hover, se rellena de rojo
+        background-color: variables.$color-error;
+        color: variables.$color-blanco;
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  .nav-categorias {
+    padding-top: variables.$espaciado-medio;
+
+    h3 {
+      color: variables.$color-texto;
+      font-size: 14px;
+      font-weight: bold;
+      margin: 0 0 variables.$espaciado-pequeno 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .menu-categorias {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+
+      // Cada enlace de categoría
       a {
+        padding: 8px 16px;
+        background-color: variables.$color-fondo;
+        color: variables.$color-primario;
+        text-decoration: none;
+        border-radius: variables.$border-radius;
+        font-size: 14px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+
+        &:hover {
+          background-color: variables.$color-primario;
+          color: variables.$color-blanco;
+          border-color: variables.$color-primario;
+          transform: translateY(-2px);
+        }
       }
-      #botonCerrarSesion {
+    }
+  }
+}
+
+.seccion-bienvenida {
+  text-align: center;
+  margin-bottom: variables.$espaciado-xlarge;
+  padding: variables.$espaciado-grande;
+  background: linear-gradient(135deg, variables.$color-fondo 0%, variables.$color-fondo-claro 100%);
+  border-radius: variables.$border-radius-grande;
+
+  h2 {
+    color: variables.$color-primario;
+    font-family: variables.$fuente-titulos;
+    font-size: 32px;
+    margin: 0 0 variables.$espaciado-pequeno 0;
+  }
+
+  p {
+    color: variables.$color-texto-claro;
+    font-size: 18px;
+    margin: 0;
+  }
+}
+
+.seccion-productos {
+  margin-bottom: variables.$espaciado-xlarge;
+
+  h3 {
+    color: variables.$color-texto;
+    font-family: variables.$fuente-titulos;
+    font-size: 28px;
+    margin-bottom: variables.$espaciado-grande;
+    border-left: 4px solid variables.$color-primario;
+    padding-left: variables.$espaciado-medio;
+  }
+}
+
+.grid-productos {
+  display: grid;
+  // grid-template-columns = Define cuántas columnas
+  // repeat(auto-fill, ...) = Crea automáticamente columnas según el espacio
+  // minmax(280px, 1fr) = Cada columna mínimo 280px, máximo 1 fracción del espacio
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: variables.$espaciado-grande;
+}
+
+.tarjeta-producto {
+  background-color: variables.$color-blanco;
+  border-radius: variables.$border-radius;
+  box-shadow: 0 2px 8px variables.$color-sombra;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .contenido-tarjeta {
+    padding: variables.$espaciado-grande;
+
+    h4 {
+      color: variables.$color-texto;
+      font-size: 20px;
+      margin: 0 0 variables.$espaciado-medio 0;
+      font-weight: bold;
+    }
+
+    p {
+      color: variables.$color-texto-claro;
+      font-size: 15px;
+      line-height: 1.6;
+      margin: 0 0 variables.$espaciado-medio 0;
+      min-height: 48px;
+    }
+
+    .precio {
+      color: variables.$color-primario;
+      font-size: 24px;
+      font-weight: bold;
+      margin: variables.$espaciado-medio 0;
+    }
+
+    .botones-tarjeta {
+      display: flex;
+      flex-direction: column;
+      gap: variables.$espaciado-pequeno;
+      margin-top: variables.$espaciado-medio;
+
+      button {
+        width: 100%;
+        padding: 12px 16px;
+        border: none;
+        border-radius: variables.$border-radius;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
       }
+
+      .btn-agregar {
+        background-color: variables.$color-primario;
+        color: variables.$color-blanco;
+        border: 2px solid variables.$color-primario;
+
+        &:hover {
+          background-color: variables.$color-primario-hover;
+          transform: scale(1.03);
+           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+      }
+
+      .btn-ver-detalles {
+        background-color: variables.$color-blanco;
+        color: variables.$color-acento;
+        border: 2px solid variables.$color-acento;
+
+        &:hover {
+          background-color: variables.$color-acento;
+          transform: scale(1.03);
+          border: 2px solid variables.$color-acento;
+        }
+      }
+    }
+  }
+}
+
+.seccion-categorias {
+  margin-bottom: variables.$espaciado-xlarge;
+
+  h3 {
+    color: variables.$color-texto;
+    font-family: variables.$fuente-titulos;
+    font-size: 28px;
+    margin-bottom: variables.$espaciado-medio;
+    border-left: 4px solid variables.$color-secundario;
+    padding-left: variables.$espaciado-medio;
+  }
+}
+
+.grid-categorias {
+  display: grid;
+  // Categorías más anchas que productos
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: variables.$espaciado-grande;
+}
+
+.tarjeta-categoria {
+  background-color: variables.$color-blanco;
+  border-radius: variables.$border-radius;
+  box-shadow: 0 2px 8px variables.$color-sombra;
+  padding: variables.$espaciado-grande;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  h4 {
+    color: variables.$color-primario;
+    font-size: 22px;
+    margin: 0 0 variables.$espaciado-pequeno 0;
+  }
+
+  p {
+    color: variables.$color-texto-claro;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 variables.$espaciado-medio 0;
+  }
+
+  a {
+    display: inline-block;
+    padding: 10px 24px;
+    background-color: variables.$color-secundario;
+    color: variables.$color-blanco;
+    text-decoration: none;
+    border-radius: variables.$border-radius;
+    font-weight: bold;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: variables.$color-secundario-hover;
+      transform: scale(1.05);
     }
   }
 }
