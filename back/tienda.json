@@ -32,7 +32,7 @@
             "nombre": "Hogaza de Trigo Integral",
             "precio": 4.50,
             "descripcion": "Pan rústico de trigo integral con masa madre de 48h de fermentación. Corteza crujiente y miga esponjosa.",
-            "imagen": "https://freight.cargo.site/t/original/i/ea55759641865f850700defa424fe936381ae093b40f78a73fe990ec49652f0b/La-Hogaza_Panes-Biologicos_Hogaza-Trigo-Integral-Biologico_1.jpg",
+            "imagen": "../imagenes/producto1.jpg",
             "destacado": true,
             "id_categoria": 1
         },
@@ -41,7 +41,7 @@
             "nombre": "Barra de Trigo Blanco",
             "precio": 2.80,
             "descripcion": "Barra tradicional de trigo blanco con masa madre. Perfecta para el día a día.",
-            "imagen": "https://www.lamardecookies.com/wp-content/uploads/2025/02/Barra-Rustica01-1024x768.jpg",
+            "imagen": "../imagenes/producto2.jpg",
             "destacado": false,
             "id_categoria": 1
         },
@@ -50,7 +50,7 @@
             "nombre": "Pan de Pueblo",
             "precio": 3.90,
             "descripcion": "Pan redondo de trigo con corteza gruesa y sabor tradicional.",
-            "imagen": "https://canalcocina.es/medias/images/1604PanesYQuesosHogazaPanPuebloMasaMadre.jpg",
+            "imagen": "../imagenes/producto3.jpg",
             "destacado": true,
             "id_categoria": 1
         },
@@ -59,7 +59,7 @@
             "nombre": "Pan de Centeno 100%",
             "precio": 5.20,
             "descripcion": "Pan denso y nutritivo elaborado con 100% harina de centeno integral.",
-            "imagen": "https://otonobrador.es/wp-content/uploads/2022/05/PANADERIA-LUNES03.jpg",
+            "imagen": "../imagenes/producto4.jpg",
             "destacado": true,
             "id_categoria": 2
         },
@@ -68,7 +68,7 @@
             "nombre": "Pan de Centeno y Pasas",
             "precio": 5.80,
             "descripcion": "Deliciosa combinación de centeno con pasas sultanas. Ideal para desayunos.",
-            "imagen": "https://www.pasteleriamiguez.com/wp-content/uploads/2022/01/nuestro-pan-2022-01-17-nuestro-pan-6.jpg",
+            "imagen": "../imagenes/producto5.jpg",
             "destacado": false,
             "id_categoria": 2
         },
@@ -77,7 +77,7 @@
             "nombre": "Hogaza de Espelta Integral",
             "precio": 4.90,
             "descripcion": "Pan de espelta integral, suave y fácil de digerir. Masa madre natural.",
-            "imagen": "https://levaduramadre.es/wp-content/uploads/2019/06/hogaza_espelta_integral_00.jpg",
+            "imagen": "../imagenes/producto6.jpg",
             "destacado": true,
             "id_categoria": 3
         },
@@ -86,7 +86,7 @@
             "nombre": "Chapata de Espelta",
             "precio": 3.50,
             "descripcion": "Chapata artesanal de espelta con alveolos grandes y corteza fina.",
-            "imagen": "https://panboleo.com/wp-content/uploads/2025/09/IMG_20250919_123801.jpg",
+            "imagen": "../imagenes/producto7.jpg",
             "destacado": false,
             "id_categoria": 3
         },
@@ -95,7 +95,7 @@
             "nombre": "Pan Sin Gluten de Arroz",
             "precio": 5.50,
             "descripcion": "Pan elaborado con harina de arroz, apto para celíacos. Textura suave.",
-            "imagen": "https://glutendence.com/wp-content/uploads/2022/04/pan-de-arroz-2-scaled.jpg",
+            "imagen": "../imagenes/producto8.jpg",
             "destacado": false,
             "id_categoria": 4
         },
@@ -104,7 +104,7 @@
             "nombre": "Pan Sin Gluten Multicereales",
             "precio": 6.20,
             "descripcion": "Mezcla de harinas sin gluten (arroz, maíz, trigo sarraceno) con semillas.",
-            "imagen": "https://irun.market/images/detailed/13/AMETS_BAKERY-030_lokh-fy.jpg",
+            "imagen": "../imagenes/producto9.jpg",
             "destacado": false,
             "id_categoria": 4
         },
@@ -113,7 +113,7 @@
             "nombre": "Pan de Semillas",
             "precio": 5.40,
             "descripcion": "Pan integral con girasol, sésamo, lino y calabaza. Crujiente y nutritivo.",
-            "imagen": "https://panaderiasalazar.es/app/uploads/pansemillas3.jpg",
+            "imagen": "../imagenes/producto10.jpg",
             "destacado": true,
             "id_categoria": 5
         },
@@ -122,7 +122,7 @@
             "nombre": "Pan de Nueces",
             "precio": 6.50,
             "descripcion": "Pan con trozos generosos de nueces. Perfecto con quesos.",
-            "imagen": "https://www.consumer.es/app/uploads/2016/11/pan-nueces-pasas.jpg",
+            "imagen": "../imagenes/producto11.jpg",
             "destacado": true,
             "id_categoria": 5
         },
@@ -131,7 +131,7 @@
             "nombre": "Pan de Aceitunas",
             "precio": 5.90,
             "descripcion": "Pan mediterráneo con aceitunas negras y hierbas provenzales.",
-            "imagen": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiXsCebbqw5oyzodVwbQXJWttTEj2U0nJRmoWghM1R5sAcV4iFzyr-DRDkRg_TDyJmn2bHVg92KmhAjhLrzmfS_tFGaR2gQNJQmidScEKGEtKBwGBx0v6MbNoeGBsBaNkpfFAswdJ1ZF9ai/s0/Pan+de+Aceitunas+y+Romero+%2528Vertical%2529.jpg",
+            "imagen": "../imagenes/producto12.jpg",
             "destacado": false,
             "id_categoria": 5
         }

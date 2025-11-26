@@ -3,15 +3,18 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Verificar autenticación
     verificarAutenticacion();
-
-    // 2. Cargar productos destacados
+    
+    // 2. Cargar categorías en el header (menú horizontal)
+    cargarCategoriasMenu();
+    
+    // 3. Cargar categorías con imágenes (sección principal)
+    cargarCategoriasConImagenes();
+    
+    // 4. Cargar productos destacados (solo 4)
     cargarProductosDestacados();
-
-    // 3. Cargar categorías
-    cargarCategorias();
-
-    // 4. Configurar botón de cerrar sesión
-    document.getElementById('btnCerrarSesion').addEventListener('click', cerrarSesion);
+    
+    // 5. Configurar botón cerrar sesión
+    document.getElementById('botonCerrarSesion').addEventListener('click', cerrarSesion);
 });
 
 // Verifica que el usuario esté autenticado
@@ -24,59 +27,104 @@ function verificarAutenticacion() {
     }
 }
 
-// Carga los productos destacados desde localStorage
+//Cargar las categorías del Menu
+function cargarCategoriasMenu() {
+    const tienda = JSON.parse(localStorage.getItem('tienda'));
+    const contenedor = document.getElementById('menuCategorias');
+    
+    contenedor.innerHTML = '';
+    
+    tienda.categorias.forEach(categoria => {
+        const enlace = document.createElement('a');
+        enlace.href = `categories.html?id=${categoria.id}`;
+        enlace.textContent = categoria.nombre;
+        
+        contenedor.appendChild(enlace);
+    });
+}
+// Cargar las categorías con imágenes
+function cargarCategoriasConImagenes() {
+    const tienda = JSON.parse(localStorage.getItem('tienda'));
+    const contenedor = document.getElementById('listadoCategorias');
+    
+    contenedor.innerHTML = '';
+    
+    // Imágenes ilustrativas para cada categoría
+    const imagenesCategoria = {
+        1: '/imagenes/slider2.jpg',  // Pan de Trigo
+        2: '/imagenes/slider2.jpg',  // Centeno
+        3: '/imagenes/slider2.jpg',  // Espelta
+        4: '/imagenes/slider2.jpg',  // Sin Gluten
+        5: '/imagenes/slider2.jpg'   // Especiales
+    };
+    
+    tienda.categorias.forEach(categoria => {
+        const tarjeta = crearTarjetaCategoriaConImagen(categoria, imagenesCategoria);
+        contenedor.appendChild(tarjeta);
+    });
+}
+//Tarjeta de categoría con imagen
+function crearTarjetaCategoriaConImagen(categoria, imagenes) {
+    const enlace = document.createElement('a');
+    enlace.href = `categories.html?id=${categoria.id}`;
+    enlace.className = 'tarjeta-categoria-imagen';
+    
+    // Obtener la imagen correspondiente o usar una por defecto
+    const imagenUrl = imagenes[categoria.id] || 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400';
+    
+    enlace.innerHTML = `
+        <img src="${imagenUrl}" alt="${categoria.nombre}">
+        <div class="categoria-info">
+            <h3>${categoria.nombre}</h3>
+            <p>${categoria.descripcion}</p>
+        </div>
+    `;
+    
+    return enlace;
+}
+
+//Cargar productos destacados
 function cargarProductosDestacados() {
     const tienda = JSON.parse(localStorage.getItem('tienda'));
-
-    // Filtrar solo productos destacados
-    const productosDestacados = tienda.productos.filter(p => p.destacado === true);
-
-    // Obtener el contenedor
     const contenedor = document.getElementById('productosDestacados');
-    contenedor.innerHTML = ''; // Limpiar contenido
-
-    // Crear tarjetas de productos
-    productosDestacados.forEach(producto => {
+    
+    contenedor.innerHTML = '';
+    
+    // Filtrar solo los productos destacados
+    const productosDestacados = tienda.productos.filter(producto => producto.destacado === true);
+    
+    // Limitar a los primeros 4 productos
+    const primeros4 = productosDestacados.slice(0, 4);
+    
+    primeros4.forEach(producto => {
         const tarjeta = crearTarjetaProducto(producto);
         contenedor.appendChild(tarjeta);
     });
 }
 
-// Crea una tarjeta HTML para un producto
+// Crea una tarjeta del producto
 function crearTarjetaProducto(producto) {
     const tarjeta = document.createElement('div');
     tarjeta.className = 'tarjeta-producto';
-
+    
     tarjeta.innerHTML = `
-        <img src="${producto.imagen}" alt="${producto.nombre}" class="imagen-producto">
-        <h4>${producto.nombre}</h4>
-        <p class="descripcion">${producto.descripcion}</p>
-        <p class="precio">${producto.precio.toFixed(2)}€</p>
-        <button class="boton-agregar" onclick="agregarAlCarrito(${producto.id})">
-            Agregar al Carrito
-        </button>
-        <button class="boton-ver" onclick="verProducto(${producto.id})">
-            Ver Detalles
-        </button>
+        <img src="${producto.imagen}" alt="${producto.nombre}">
+        <div class="contenido-tarjeta">
+            <h4>${producto.nombre}</h4>
+            <p>${producto.descripcion}</p>
+            <div class="precio">${producto.precio.toFixed(2)}€</div>
+            <div class="botones-tarjeta">
+                <button class="btn-agregar" onclick="agregarAlCarrito(${producto.id})">
+                    Agregar al Carrito
+                </button>
+                <button class="btn-ver-detalles" onclick="verProducto(${producto.id})">
+                    Ver Detalles
+                </button>
+            </div>
+        </div>
     `;
-
+    
     return tarjeta;
-}
-
-// Carga las categorías desde localStorage
-function cargarCategorias() {
-    const tienda = JSON.parse(localStorage.getItem('tienda'));
-
-    const contenedor = document.getElementById('menuCategorias');
-    contenedor.innerHTML = '';
-
-    tienda.categorias.forEach(categoria => {
-        const enlace = document.createElement('a');
-        enlace.href = `categories.html?id=${categoria.id}`;
-        enlace.textContent = categoria.nombre;
-
-        contenedor.appendChild(enlace);
-    });
 }
 
 // Agrega un producto al carrito

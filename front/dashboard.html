@@ -9,38 +9,109 @@
 </head>
 
 <body>
-    <div class="contenedor-dashboard">
-        <!-- Header con navegación -->
-        <header class="header-dashboard">
+    <header class="header-dashboard">
+        <div class="contenedor-header">
             <div class="header-top">
-                <h1> Panadería Artesanal</h1>
+                <h1 class="logo">🥖 Panadería Artesanal</h1>
                 <nav class="nav-principal">
-                    <a href="cart.html" class="btn-nav btn-carrito">🛒 Carrito</a>
-                    <button id="botonCerrarSesion">Cerrar Sesión</button>
+                    <a href="carrito.html" class="btn-nav btn-carrito">🛒 Carrito</a>
+                    <button id="botonCerrarSesion" class="btn-cerrar-sesion">Cerrar Sesión</button>
                 </nav>
             </div>
-
+            
+            <!-- Menú de categorías -->
             <nav class="nav-categorias">
                 <h3>Categorías:</h3>
                 <div id="menuCategorias" class="menu-categorias">
+                    <!-- JavaScript cargará aquí -->
                 </div>
             </nav>
-        </header>
+        </div>
+    </header>
 
-        <section class="seccion-bienvenida">
-            <h2>Bienvenido a nuestra tienda</h2>
-            <p>Descubre nuestros panes artesanales de masa madre</p>
-        </section>
+<!--Slider-->
+    <section class="slider-hero">
+        <div class="slider-container">
+            <div class="slide active">
+               <img src="/imagenes/Slider1" alt="">
+                <div class="slide-texto">
+                    <h2>Bienvenido a nuestra tienda</h2>
+                    <p>Pan artesanal de masa madre desde 1995</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="/imagenes/slider2.jpg" alt="">
+                <div class="slide-texto">
+                    <h2>Recién horneado cada día</h2>
+                    <p>Descubre nuestros panes especiales</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="/imagenes/slide3.jpg" alt="">
+                <div class="slide-texto">
+                    <h2>Tradición y calidad</h2>
+                    <p>Más de 20 variedades de pan artesanal</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Botones de navegación del slider -->
+        <button class="slider-btn slider-prev" onclick="cambiarSlide(-1)">❮</button>
+        <button class="slider-btn slider-next" onclick="cambiarSlide(1)">❯</button>
+        
+        <!-- Indicadores (puntos) -->
+        <div class="slider-indicadores">
+            <span class="indicador active" onclick="irASlide(0)"></span>
+            <span class="indicador" onclick="irASlide(1)"></span>
+            <span class="indicador" onclick="irASlide(2)"></span>
+        </div>
+    </section>
 
-        <!-- Productos Destacados -->
-        <section class="seccion-productos">
-            <h3>🌟 Productos Destacados</h3>
-            <div id="productosDestacados" class="grid-productos">
-                <!-- Los productos se cargarán aquí con JavaScript -->
+    <main class="contenedor-dashboard">
+        
+        <!--Categorías con imágenes-->
+        <section class="seccion-categorias-principal">
+            <h2>Nuestras Categorías</h2>
+            <div id="listadoCategorias" class="grid-categorias-imagenes">
+                <!-- JavaScript cargará aquí -->
             </div>
         </section>
-    </div>
 
+        <section class="seccion-productos-destacados">
+            <h2>🌟 Productos Destacados</h2>
+            <div id="productosDestacados" class="grid-productos-horizontal">
+                <!-- JavaScript cargará aquí -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-dashboard">
+        <div class="contenedor-footer">
+            <div class="footer-columna">
+                <h4>Panadería Artesanal</h4>
+                <p>Del horno a tu cesta</p>
+            </div>
+            <div class="footer-columna">
+                <h4>Contacto</h4>
+                <p>📞 955 703 578</p>
+                <p>📧 info@panaderia.com</p>
+            </div>
+            <div class="footer-columna">
+                <h4>Horario</h4>
+                <p>Lunes a Sábado: 8:00 - 20:00</p>
+                <p>Domingos: 9:00 - 14:00</p>
+            </div>
+            <div class="footer-columna">
+                <h4>Síguenos</h4>
+                <p>📱 Instagram | Facebook</p>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>© 2025 Panadería Artesanal. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+  <script src="slider.js"></script>
     <script src="dashboard.js"></script>
 </body>
 
