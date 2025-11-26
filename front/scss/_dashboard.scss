@@ -22,7 +22,7 @@ body {
   .contenedor-header {
     max-width: 1400px;
     margin: 0 auto;
-    padding: variables.$espaciado-medio variables.$espaciado-grande;
+    padding: variables.$espaciado-grande 40px;
  width: 100%;
   }
 
@@ -32,27 +32,36 @@ body {
     align-items: center;
     flex-wrap: wrap;
     gap: variables.$espaciado-medio;
-    padding-bottom: variables.$espaciado-medio;
-    border-bottom: 2px solid variables.$color-fondo;
+    padding-bottom: variables.$espaciado-grande;
+    border-bottom: 2px solid variables.$color-primario;
   }
 
   .logo {
+   display: flex;  
+    align-items: center;
+    gap: 16px;  
     color: variables.$color-primario;
     font-family: variables.$fuente-titulos;
-    font-size: 28px;
+    font-size: 36px;  
     margin: 0;
+    font-weight: bold;
+  }
+  img {  
+      height: 60px;  
+      width: auto;
+    }
   }
 
   .nav-principal {
     display: flex;
-    gap: 12px;
+    gap: 16px;
     flex-wrap: wrap;
 
     .btn-nav, #botonCerrarSesion {
-      padding: 10px 20px;
+      padding: 14px 24px;
       border-radius: variables.$border-radius;
       font-weight: bold;
-      font-size: 14px;
+      font-size: 16px;
       transition: all 0.3s ease;
       cursor: pointer;
       text-decoration: none;
@@ -92,32 +101,7 @@ body {
       text-transform: uppercase;
       letter-spacing: 1px;
     }
-
-    .menu-categorias {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-
-      a {
-        padding: 8px 16px;
-        background-color: variables.$color-fondo;
-        color: variables.$color-primario;
-        text-decoration: none;
-        border-radius: variables.$border-radius;
-        font-size: 14px;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        border: 2px solid transparent;
-
-        &:hover {
-          background-color: variables.$color-primario;
-          color: variables.$color-blanco;
-          transform: translateY(-2px);
-        }
-      }
-    }
   }
-}
 
 //Slider
 .slider-hero {

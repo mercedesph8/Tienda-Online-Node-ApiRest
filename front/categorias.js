@@ -9,9 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
     //Cargo información de la categoríaa
     cargarInfoCategoria(idCategoria);
 
+     
+    // 4. Cargar productos de la categoría 
+    cargarProductosCategoria(idCategoria);
+
     //Configurar boton de cerrrar sesion
     document.getElementById('botonCerrarSesion').addEventListener('click', cerrarSesion);
-
+});
     function verificarAutenticacion() {
         const token = localStorage.getItem('token');
 
@@ -43,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('nombreCategoria').textContent = categoria.nombre;
         document.getElementById('descripcionCategoria').textContent = categoria.descripcion;
     }
+   
     // Carga los productos de la categoría
     function cargarProductosCategoria(idCategoria) {
         const tienda = JSON.parse(localStorage.getItem('tienda'));
@@ -72,13 +77,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         tarjeta.innerHTML = `
         <img src="${producto.imagen}" alt="${producto.nombre}" class="imagen-producto">
+        <div class="contenido-tarjeta"> 
         <h4>${producto.nombre}</h4>
         <p class="descripcion">${producto.descripcion}</p>
         <p class="precio">${producto.precio.toFixed(2)}€</p>
-        <button class="boton-agregar" onclick="agregarAlCarrito(${producto.id})">
+         <div class="botones-tarjeta">
+        <button class="btn-agregar" onclick="agregarAlCarrito(${producto.id})">
             Agregar al Carrito
         </button>
-        <button class="boton-ver" onclick="verProducto(${producto.id})">
+        <button class="btn-ver-detalles" onclick="verProducto(${producto.id})">
             Ver Detalles
         </button>
     `;
@@ -124,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('productosVistos', JSON.stringify(productosVistos));
         }
 
-        window.location.href = `product.html?id=${idProducto}`;
+        window.location.href = `productos.html?id=${idProducto}`;
     }
     // Cierra la sesión del usuario
     function cerrarSesion() {
@@ -139,4 +146,3 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'login.html';
         }
     }
-});

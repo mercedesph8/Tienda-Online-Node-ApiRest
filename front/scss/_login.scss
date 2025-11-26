@@ -1,21 +1,6 @@
 @use "variables";
 @use "mixins";
 
-body {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  // 135deg = Ángulo diagonal (de arriba-izquierda a abajo-derecha)
-  background: linear-gradient(
-    135deg,
-    variables.$color-fondo-claro 0%,
-    variables.$color-fondo 100%
-  );
-  font-family: variables.$fuente-principal;
-  min-height: 100vh; //Que ocupe al menos el 100Ç% de la altura de la pantalla, así pueo centrar el contenido verticalmente
-}
   .contenedor-login {
     background-color: variables.$color-blanco;
     padding: variables.$espaciado-xlarge; // 40px arriba, 40px abajo, 40px izq, 40px der

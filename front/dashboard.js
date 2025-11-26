@@ -1,19 +1,16 @@
 // Este archivo maneja la página del dashboard
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Verificar autenticación
+    //Verificar autenticación
     verificarAutenticacion();
     
-    // 2. Cargar categorías en el header (menú horizontal)
-    cargarCategoriasMenu();
-    
-    // 3. Cargar categorías con imágenes (sección principal)
+    //Cargar categorías con imágenes (sección principal)
     cargarCategoriasConImagenes();
     
-    // 4. Cargar productos destacados (solo 4)
+    //Cargar productos destacados (solo 4)
     cargarProductosDestacados();
     
-    // 5. Configurar botón cerrar sesión
+    //Configurar botón cerrar sesión
     document.getElementById('botonCerrarSesion').addEventListener('click', cerrarSesion);
 });
 
@@ -27,21 +24,7 @@ function verificarAutenticacion() {
     }
 }
 
-//Cargar las categorías del Menu
-function cargarCategoriasMenu() {
-    const tienda = JSON.parse(localStorage.getItem('tienda'));
-    const contenedor = document.getElementById('menuCategorias');
-    
-    contenedor.innerHTML = '';
-    
-    tienda.categorias.forEach(categoria => {
-        const enlace = document.createElement('a');
-        enlace.href = `categories.html?id=${categoria.id}`;
-        enlace.textContent = categoria.nombre;
-        
-        contenedor.appendChild(enlace);
-    });
-}
+
 // Cargar las categorías con imágenes
 function cargarCategoriasConImagenes() {
     const tienda = JSON.parse(localStorage.getItem('tienda'));
@@ -51,11 +34,11 @@ function cargarCategoriasConImagenes() {
     
     // Imágenes ilustrativas para cada categoría
     const imagenesCategoria = {
-        1: '/imagenes/slider2.jpg',  // Pan de Trigo
-        2: '/imagenes/slider2.jpg',  // Centeno
-        3: '/imagenes/slider2.jpg',  // Espelta
-        4: '/imagenes/slider2.jpg',  // Sin Gluten
-        5: '/imagenes/slider2.jpg'   // Especiales
+        1: '/imagenes/Categoria1.png',  // Pan de Trigo
+        2: '/imagenes/categoria2.png',  // Centeno
+        3: '/imagenes/categoria3.jpg',  // Espelta
+        4: '/imagenes/categoria5.png',  // Sin Gluten
+        5: '/imagenes/categoria6.png'   // Especiales
     };
     
     tienda.categorias.forEach(categoria => {
@@ -66,11 +49,11 @@ function cargarCategoriasConImagenes() {
 //Tarjeta de categoría con imagen
 function crearTarjetaCategoriaConImagen(categoria, imagenes) {
     const enlace = document.createElement('a');
-    enlace.href = `categories.html?id=${categoria.id}`;
+    enlace.href = `categorias.html?id=${categoria.id}`;
     enlace.className = 'tarjeta-categoria-imagen';
     
     // Obtener la imagen correspondiente o usar una por defecto
-    const imagenUrl = imagenes[categoria.id] || 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400';
+    const imagenUrl = imagenes[categoria.id];
     
     enlace.innerHTML = `
         <img src="${imagenUrl}" alt="${categoria.nombre}">

@@ -31,7 +31,7 @@
             "id": 1,
             "nombre": "Hogaza de Trigo Integral",
             "precio": 4.50,
-            "descripcion": "Pan rústico de trigo integral con masa madre de 48h de fermentación. Corteza crujiente y miga esponjosa.",
+            "descripcion": "Pan rústico de trigo integral con masa madre de 48h de fermentación.",
             "imagen": "../imagenes/producto1.jpg",
             "destacado": true,
             "id_categoria": 1
