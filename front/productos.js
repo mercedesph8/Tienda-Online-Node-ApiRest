@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         agregarAlCarrito(idProducto);
     });
     // 7. Configurar botón de cerrar sesión
-    document.getElementById('btnCerrarSesion').addEventListener('click', cerrarSesion);
+    document.getElementById('botonCerrarSesion').addEventListener('click', cerrarSesion);
 });
 
 // Verifica que el usuario esté autenticado
@@ -80,7 +80,7 @@ function agregarAlCarrito(idProducto) {
         return;
     }
 
-    let carrito = JSON.parse(localStorage.getItem('carrito'));
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
     const productoExistente = carrito.find(item => item.id === idProducto);
 

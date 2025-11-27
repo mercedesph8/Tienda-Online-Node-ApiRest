@@ -1,0 +1,203 @@
+@use "variables";
+@use "mixins";
+
+
+.contenedor-product {
+  min-height: 100vh;
+  background-color: variables.$color-fondo-claro;
+}
+
+.header-product {
+  background-color: variables.$color-blanco;
+  box-shadow: 0 2px 8px variables.$color-sombra;
+  padding: variables.$espaciado-grande variables.$espaciado-xlarge;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: variables.$espaciado-medio;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: variables.$color-primario;
+    font-family: variables.$fuente-titulos;
+    font-size: 28px;
+    margin: 0;
+    font-weight: bold;
+
+    img {
+      height: 50px;
+      width: auto;
+    }
+  }
+
+  .nav-principal {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+
+    .btn-nav, .btn-cerrar-sesion {
+      padding: 12px 24px;
+      border-radius: variables.$border-radius;
+      font-weight: bold;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+    }
+
+    .btn-nav {
+      background-color: variables.$color-primario;
+      color: variables.$color-blanco;
+
+      &:hover {
+        background-color: variables.$color-primario-hover;
+        transform: translateY(-2px);
+      }
+    }
+
+    .btn-carrito {
+      background-color: variables.$color-secundario;
+      color: variables.$color-blanco;
+
+      &:hover {
+        background-color: variables.$color-secundario-hover;
+      }
+    }
+
+    .btn-cerrar-sesion {
+      background-color: transparent;
+      color: variables.$color-error;
+      border: 2px solid variables.$color-error;
+
+      &:hover {
+        background-color: variables.$color-error;
+        color: variables.$color-blanco;
+      }
+    }
+  }
+}
+
+.seccion-producto-detalle {
+  max-width: 1200px;
+  margin: variables.$espaciado-xlarge auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: variables.$espaciado-xlarge;
+  align-items: start;
+}
+
+.producto-imagen {
+  background-color: variables.$color-blanco;
+  border-radius: variables.$border-radius;
+  box-shadow: 0 4px 12px variables.$color-sombra;
+  padding: variables.$espaciado-grande;
+  position: sticky;
+  top: 20px;
+
+  img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: variables.$border-radius;
+    display: block;
+  }
+}
+
+.producto-info {
+  background-color: variables.$color-blanco;
+  border-radius: variables.$border-radius;
+  box-shadow: 0 4px 12px variables.$color-sombra;
+  padding: variables.$espaciado-xlarge;
+
+  h2 {
+    color: variables.$color-texto;
+    font-family: variables.$fuente-titulos;
+    font-size: 42px;
+    margin: 0 0 variables.$espaciado-medio 0;
+    line-height: 1.2;
+  }
+
+  .categoria-producto {
+    color: variables.$color-texto-claro;
+    font-size: 16px;
+    margin-bottom: variables.$espaciado-grande;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    span {
+      color: variables.$color-secundario;
+      font-weight: bold;
+    }
+  }
+
+  .descripcion-producto {
+    color: variables.$color-texto;
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: variables.$espaciado-grande;
+    padding-bottom: variables.$espaciado-grande;
+    border-bottom: 2px solid variables.$color-fondo;
+  }
+
+  .precio-producto {
+    color: variables.$color-primario;
+    font-size: 48px;
+    font-weight: bold;
+    font-family: variables.$fuente-titulos;
+    margin: variables.$espaciado-grande 0;
+
+    span {
+      display: inline-block;
+    }
+  }
+
+  .acciones-producto {
+    display: flex;
+    flex-direction: column;
+    gap: variables.$espaciado-medio;
+    margin-top: variables.$espaciado-grande;
+
+    .btn-agregar-grande {
+      @include mixins.boton-base;
+      background-color: variables.$color-primario;
+      color: variables.$color-blanco;
+      font-size: 18px;
+      padding: 18px 32px;
+      width: 100%;
+      border: none;
+
+      &:hover {
+        background-color: variables.$color-primario-hover;
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+
+    .btn-volver {
+      text-align: center;
+      padding: 14px 24px;
+      background-color: variables.$color-blanco;
+      color: variables.$color-acento;
+      border: 2px solid variables.$color-acento;
+      border-radius: variables.$border-radius;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: variables.$color-acento;
+        color: variables.$color-blanco;
+        transform: translateY(-2px);
+      }
+    }
+  }
+}

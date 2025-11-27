@@ -4,34 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito - Panadería Artesanal</title>
+    <title>Carrito</title>
     <link rel="stylesheet" href="/scss/main.css">
 </head>
 
 <body>
     <div class="contenedor-cart">
-        <!-- Header con navegación -->
         <header class="header-cart">
-            <h1>Panadería Masa&Madre</h1>
+            <h1 class="logo">
+                <img src="/imagenes/logo.png" alt="Logo Panadería">
+                Panadería Masa&Madre
+            </h1>
             <nav class="nav-principal">
                 <a href="dashboard.html" class="btn-nav">Inicio</a>
-                <a href="categorias.html" class="btn-nav">Categorías</a>
                 <button id="botonCerrarSesion" class="btn-cerrar-sesion">Cerrar Sesión</button>
             </nav>
         </header>
 
-        <!-- Título -->
         <section class="seccion-titulo-carrito">
             <h2>🛒 Tu Carrito de Compras</h2>
         </section>
 
-        <!-- Productos del carrito -->
         <section class="seccion-carrito">
             <div id="productosCarrito" class="lista-carrito">
                 <!-- Los productos del carrito se cargarán aquí -->
             </div>
 
-            <!-- Resumen del carrito -->
             <div class="resumen-carrito">
                 <h3>Resumen del Pedido</h3>
                 <div class="linea-resumen">
@@ -43,7 +41,7 @@
                     <span id="totalPrecio">0.00€</span>
                 </div>
 
-                <button id="btnRealizarCompra" class="btn-comprar">
+                <button id="botonRealizarCompra" class="btn-comprar">
                     Realizar Compra
                 </button>
 
@@ -54,7 +52,8 @@
         </section>
     </div>
 
-    <script src="cart.js"></script>
+    <script src="carrito.js"></script>
 </body>
+
 
 </html>

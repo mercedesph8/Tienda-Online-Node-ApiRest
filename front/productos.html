@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Producto - Panadería Artesanal</title>
+    <title>Producto - Panadería Masa&Madre</title>
     <link rel="stylesheet" href="/scss/main.css">
 </head>
 
@@ -12,21 +12,20 @@
     <div class="contenedor-product">
         <!-- Header con navegación -->
         <header class="header-product">
-            <h1>Panadería Masa&Madre</h1>
+            <h1 class="logo">
+                <img src="/imagenes/logo.png" alt="Logo Panadería">
+                Panadería Masa&Madre
+            </h1>
             <nav class="nav-principal">
                 <a href="dashboard.html" class="btn-nav">Inicio</a>
-                <a href="categorias.html" class="btn-nav">Categorías</a>
                 <a href="carrito.html" class="btn-nav btn-carrito">🛒 Carrito</a>
                 <button id="botonCerrarSesion" class="btn-cerrar-sesion">Cerrar Sesión</button>
             </nav>
         </header>
-
-        <!-- Detalles del producto -->
         <section class="seccion-producto-detalle">
             <div class="producto-imagen">
                 <img id="imagenProducto" src="" alt="">
             </div>
-
             <div class="producto-info">
                 <h2 id="nombreProducto">Producto</h2>
                 <p class="categoria-producto">Categoría: <span id="categoriaProducto"></span></p>
@@ -37,12 +36,13 @@
                     <button id="botonAgregarCarrito" class="btn-agregar-grande">
                         Agregar al Carrito
                     </button>
+                    <a href="dashboard.html" class="btn-volver">← Volver a la tienda</a>
                 </div>
             </div>
         </section>
     </div>
 
-    <script src="product.js"></script>
+    <script src="productos.js"></script>
 </body>
 
 </html>

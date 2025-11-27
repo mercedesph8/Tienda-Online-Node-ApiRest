@@ -23,7 +23,7 @@ function verificarAutenticacion() {
 
 // Carga los productos del carrito desde localStorage
 function cargarCarrito() {
-    const carrito = JSON.parse(localStorage.getItem('carrito'));
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     const contenedor = document.getElementById('productosCarrito');
 
     contenedor.innerHTML = '';
@@ -52,7 +52,7 @@ function cargarCarrito() {
     // Actualizar resumen
     actualizarResumen();
 }
-// Crea una tarjeta para un producto en el carrito
+// tarjeta para un producto en el carrito
 function crearTarjetaCarrito(producto, index) {
     const tarjeta = document.createElement('div');
     tarjeta.className = 'item-carrito';
@@ -66,21 +66,21 @@ function crearTarjetaCarrito(producto, index) {
             <p class="precio-unitario">Precio: ${producto.precio.toFixed(2)}€</p>
         </div>
         <div class="cantidad-carrito">
-            <button onclick="decrementarCantidad(${index})">-</button>
-            <span>${producto.cantidad}</span>
-            <button onclick="incrementarCantidad(${index})">+</button>
+            <button class="btn-cantidad" onclick="decrementarCantidad(${index})">-</button>
+            <span class="numero-cantidad">${producto.cantidad}</span>
+            <button class="btn-cantidad" onclick="incrementarCantidad(${index})">+</button>
         </div>
         <div class="subtotal-carrito">
-            <p>Subtotal: ${subtotal}€</p>
+            <p class="precio-subtotal">${subtotal}€</p>
         </div>
-        <button onclick="eliminarProducto(${index})" class="btn-eliminar">🗑️</button>
+        <button onclick="eliminarProducto(${index})" class="btn-eliminar">X</button>
     `;
 
     return tarjeta;
 }
 // Incrementa la cantidad de un producto
 function incrementarCantidad(index) {
-    let carrito = JSON.parse(localStorage.getItem('carrito'));
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     carrito[index].cantidad++;
     localStorage.setItem('carrito', JSON.stringify(carrito));
     cargarCarrito();
@@ -88,7 +88,7 @@ function incrementarCantidad(index) {
 
 // Decrementa la cantidad de un producto
 function decrementarCantidad(index) {
-    let carrito = JSON.parse(localStorage.getItem('carrito'));
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
     if (carrito[index].cantidad > 1) {
         carrito[index].cantidad--;
@@ -98,10 +98,14 @@ function decrementarCantidad(index) {
 }
 // Elimina un producto del carrito
 function eliminarProducto(index) {
-    let carrito = JSON.parse(localStorage.getItem('carrito'));
-    carrito.splice(index, 1);
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    cargarCarrito();
+    const confirmar = confirm('¿Eliminar este producto del carrito?');
+    
+    if (confirmar) {
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        carrito.splice(index, 1);
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        cargarCarrito();
+    }
 }
 
 // Vacía todo el carrito
@@ -115,7 +119,7 @@ function vaciarCarrito() {
 }
 // Actualiza el resumen del carrito
 function actualizarResumen() {
-    const carrito = JSON.parse(localStorage.getItem('carrito'));
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
     // Calcular total de productos
     const totalProductos = carrito.reduce((total, item) => total + item.cantidad, 0);
@@ -131,7 +135,7 @@ function actualizarResumen() {
 // Realiza la compra enviando el carrito al servidor
 async function realizarCompra() {
     const token = localStorage.getItem('token');
-    const carrito = JSON.parse(localStorage.getItem('carrito'));
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
     if (carrito.length === 0) {
         alert('El carrito está vacío');

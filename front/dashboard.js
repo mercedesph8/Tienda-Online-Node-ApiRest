@@ -89,13 +89,13 @@ function cargarProductosDestacados() {
 function crearTarjetaProducto(producto) {
     const tarjeta = document.createElement('div');
     tarjeta.className = 'tarjeta-producto';
-    
+
     tarjeta.innerHTML = `
-        <img src="${producto.imagen}" alt="${producto.nombre}">
+        <img src="${producto.imagen}" alt="${producto.nombre}" class="imagen-producto">
         <div class="contenido-tarjeta">
             <h4>${producto.nombre}</h4>
-            <p>${producto.descripcion}</p>
-            <div class="precio">${producto.precio.toFixed(2)}€</div>
+            <p class="descripcion">${producto.descripcion}</p>
+            <p class="precio">${producto.precio.toFixed(2)}€</p>
             <div class="botones-tarjeta">
                 <button class="btn-agregar" onclick="agregarAlCarrito(${producto.id})">
                     Agregar al Carrito
@@ -106,10 +106,9 @@ function crearTarjetaProducto(producto) {
             </div>
         </div>
     `;
-    
+
     return tarjeta;
 }
-
 // Agrega un producto al carrito
 function agregarAlCarrito(idProducto) {
     const tienda = JSON.parse(localStorage.getItem('tienda'));

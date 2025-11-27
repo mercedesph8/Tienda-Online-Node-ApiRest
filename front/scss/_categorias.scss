@@ -1,16 +1,11 @@
 @use "variables";
 @use "mixins";
 
-// ====================================
-// PÁGINA DE CATEGORÍAS
-// ====================================
-
 .contenedor-categorias {
   min-height: 100vh;
   background-color: variables.$color-fondo-claro;
 }
 
-// Header
 .header-categorias {
   background-color: variables.$color-blanco;
   box-shadow: 0 2px 8px variables.$color-sombra;
@@ -85,7 +80,6 @@
   }
 }
 
-// Sección de información de la categoría
 .seccion-categoria-info {
   background: linear-gradient(135deg, variables.$color-primario 0%, variables.$color-secundario 100%);
   color: variables.$color-blanco;
@@ -106,7 +100,6 @@
   }
 }
 
-// Sección de productos
 .seccion-productos-categoria {
   max-width: 1400px;
   margin: 0 auto;
@@ -123,7 +116,6 @@
   }
 }
 
-// Grid de productos
 .grid-productos {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -139,7 +131,6 @@
   }
 }
 
-// Tarjetas de productos (reutilizables)
 .tarjeta-producto {
   background-color: variables.$color-blanco;
   border-radius: variables.$border-radius;
